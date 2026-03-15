@@ -473,11 +473,6 @@ body.light h3 {
 .projects-grid {
   display: grid;
   gap: 1.2rem;
-}
-
-.grid-2,
-.grid-3,
-.projects-grid {
   grid-template-columns: 1fr;
 }
 
@@ -648,14 +643,16 @@ footer a:hover {
 .contact-card {
   display: grid;
   gap: 0.9rem;
+  width: 100%;
 }
 
 .contact-card p {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 0;
+  min-width: 0;
 }
 
 .contact-card i {
@@ -663,6 +660,12 @@ footer a:hover {
   color: var(--accent);
   text-align: center;
   flex-shrink: 0;
+}
+
+.contact-link {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ------------------ FOOTER ------------------ */
@@ -925,36 +928,7 @@ body.light #theme-toggle {
     width: 44px;
     height: 44px;
   }
-}
-.contact-card {
-  display: grid;
-  gap: 0.9rem;
-  width: 100%;
-}
 
-.contact-card p {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  flex-wrap: nowrap;
-  margin: 0;
-  min-width: 0;
-}
-
-.contact-card i {
-  width: 20px;
-  color: var(--accent);
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.contact-link {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-}
-
-@media (max-width: 640px) {
   .contact-card p {
     align-items: flex-start;
   }
