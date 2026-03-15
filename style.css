@@ -510,14 +510,20 @@ body.light h3 {
 /* ------------------ ABOUT / SECCIONS DESTACADES ------------------ */
 #about,
 #technologies,
-#contact {
+#contact,
+#competency-cv,
+#specialization,
+#training-plan {
   background: linear-gradient(180deg, rgba(56, 189, 248, 0.08), transparent 90%);
   border-radius: var(--radius);
 }
 
 #about .card,
 #technologies .card,
-#contact .card {
+#contact .card,
+#competency-cv .card,
+#specialization .card,
+#training-plan .card {
   margin-bottom: 0;
 }
 
@@ -952,7 +958,10 @@ body.light #theme-toggle {
   footer,
   #about,
   #technologies,
-  #contact {
+  #contact,
+  #competency-cv,
+  #specialization,
+  #training-plan {
     box-shadow: none !important;
     background: #fff !important;
     color: #000 !important;
