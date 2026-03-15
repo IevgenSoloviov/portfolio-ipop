@@ -926,6 +926,39 @@ body.light #theme-toggle {
     height: 44px;
   }
 }
+.contact-card {
+  display: grid;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.contact-card p {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: nowrap;
+  margin: 0;
+  min-width: 0;
+}
+
+.contact-card i {
+  width: 20px;
+  color: var(--accent);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.contact-link {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .contact-card p {
+    align-items: flex-start;
+  }
+}
 
 /* ------------------ PRINT ------------------ */
 @media print {
