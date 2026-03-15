@@ -1,156 +1,184 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ---------- Navbar: canvi de fons quan hi ha scroll ----------
+  const body = document.body;
   const nav = document.querySelector(".navbar");
-
-  if (nav) {
-    let lastScroll = 0;
-
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (Math.abs(window.scrollY - lastScroll) > 10) {
-          nav.classList.toggle("scrolled", window.scrollY > 50);
-          lastScroll = window.scrollY;
-        }
-      },
-      { passive: true }
-    );
-  }
-
-  // ---------- Enllaç actiu segons secció visible ----------
   const hero = document.querySelector("#hero");
-  const sections = document.querySelectorAll("section");
-  const allSections = [hero, ...sections].filter(Boolean);
-  const links = document.querySelectorAll(".nav-links a");
+  const sections = [...document.querySelectorAll("main section")];
+  const navLinks = [...document.querySelectorAll(".nav-links a")];
+  const toggleBtn = document.getElementById("theme-toggle");
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  const counters = [...document.querySelectorAll(".counter")];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const setActive = (id) => {
-    if (!id) return;
+  /* ------------------ NAVBAR SCROLLED ------------------ */
+  const handleNavbarScroll = () => {
+    if (!nav) return;
+    nav.classList.toggle("scrolled", window.scrollY > 50);
+  };
 
-    links.forEach((a) => {
-      const active = a.getAttribute("href") === `#${id}`;
-      a.classList.toggle("active", active);
+  handleNavbarScroll();
+  window.addEventListener("scroll", handleNavbarScroll, { passive: true });
 
-      if (active) {
-        a.setAttribute("aria-current", "page");
+  /* ------------------ ENLLAÇ ACTIU ------------------ */
+  const setActiveLink = (id) => {
+    if (!id || !navLinks.length) return;
+
+    navLinks.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
       } else {
-        a.removeAttribute("aria-current");
+        link.removeAttribute("aria-current");
       }
     });
   };
 
-  if (allSections.length && links.length) {
-    const ioActive = new IntersectionObserver(
+  const observableSections = [hero, ...sections].filter(
+    (section, index, arr) => section && arr.indexOf(section) === index
+  );
+
+  if (observableSections.length && navLinks.length) {
+    const activeObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries.length) {
+          setActiveLink(visibleEntries[0].target.id);
+        }
       },
-      { rootMargin: "-40% 0px -50% 0px", threshold: 0.3 }
+      {
+        rootMargin: "-35% 0px -45% 0px",
+        threshold: [0.2, 0.35, 0.5, 0.7]
+      }
     );
 
-    allSections.forEach((section) => ioActive.observe(section));
+    observableSections.forEach((section) => activeObserver.observe(section));
   }
 
-  // ---------- Animació d’entrada (fade-in) ----------
-  const toFade = [
-    ...allSections,
-    ...document.querySelectorAll("section article, section .card, section .projects-grid > *"),
-  ];
+  /* ------------------ FADE IN ------------------ */
+  const fadeElements = [
+    ...document.querySelectorAll("section"),
+    ...document.querySelectorAll("section .card"),
+    ...document.querySelectorAll(".project-card")
+  ].filter((el, index, arr) => arr.indexOf(el) === index);
 
-  if (toFade.length) {
-    const ioFade = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+  if (fadeElements.length) {
+    if (reducedMotion) {
+      fadeElements.forEach((el) => el.classList.add("visible"));
+    } else {
+      const fadeObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
             entry.target.classList.add("visible");
-            ioFade.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.12 }
+      );
 
-    toFade.forEach((el) => {
-      el.classList.add("fade-in");
-      ioFade.observe(el);
-    });
+      fadeElements.forEach((el) => {
+        el.classList.add("fade-in");
+        fadeObserver.observe(el);
+      });
+    }
   }
 
-  // ---------- Dark / Light Mode ----------
-  const toggleBtn = document.getElementById("theme-toggle");
-
+  /* ------------------ DARK / LIGHT MODE ------------------ */
   if (toggleBtn) {
-    const applyTheme = (light) => {
-      document.body.classList.toggle("light", light);
-      toggleBtn.textContent = light ? "☀️" : "🌙";
-      toggleBtn.setAttribute("aria-pressed", String(light));
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
+
+    const applyTheme = (theme) => {
+      const isLight = theme === "light";
+      body.classList.toggle("light", isLight);
+      toggleBtn.textContent = isLight ? "☀️" : "🌙";
+      toggleBtn.setAttribute("aria-pressed", String(isLight));
+      toggleBtn.setAttribute(
+        "aria-label",
+        isLight ? "Canviar a tema fosc" : "Canviar a tema clar"
+      );
     };
 
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
     const savedTheme = localStorage.getItem("theme");
-
-    applyTheme(savedTheme === "light" || (!savedTheme && prefersLight));
+    const initialTheme = savedTheme || (mediaQuery.matches ? "light" : "dark");
+    applyTheme(initialTheme);
 
     toggleBtn.addEventListener("click", () => {
-      const willBeLight = !document.body.classList.contains("light");
-      applyTheme(willBeLight);
-      localStorage.setItem("theme", willBeLight ? "light" : "dark");
+      const nextTheme = body.classList.contains("light") ? "dark" : "light";
+      applyTheme(nextTheme);
+      localStorage.setItem("theme", nextTheme);
+    });
+
+    mediaQuery.addEventListener("change", (event) => {
+      const saved = localStorage.getItem("theme");
+      if (!saved) {
+        applyTheme(event.matches ? "light" : "dark");
+      }
     });
   }
 
-  // ---------- Comptadors ----------
-  const counters = document.querySelectorAll(".counter");
-
+  /* ------------------ COMPTADORS ------------------ */
   const animateCounter = (counter) => {
     const target = Number(counter.dataset.target) || 0;
-    let count = 0;
-    const step = Math.max(target / 60, 1);
-    const formatter = new Intl.NumberFormat();
+    const formatter = new Intl.NumberFormat("ca-ES");
 
-    const update = () => {
-      count = Math.min(count + step, target);
-      counter.textContent = formatter.format(Math.floor(count));
+    if (reducedMotion || target === 0) {
+      counter.textContent = formatter.format(target);
+      return;
+    }
 
-      if (count < target) {
-        requestAnimationFrame(update);
+    const duration = 1400;
+    const start = performance.now();
+
+    const updateCounter = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(target * eased);
+
+      counter.textContent = formatter.format(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = formatter.format(target);
       }
     };
 
-    update();
+    requestAnimationFrame(updateCounter);
   };
 
   if (counters.length) {
-    const ioCounter = new IntersectionObserver(
-      (entries) => {
+    const counterObserver = new IntersectionObserver(
+      (entries, observer) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            ioCounter.unobserve(entry.target);
-          }
+          if (!entry.isIntersecting) return;
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.65 }
     );
 
-    counters.forEach((counter) => ioCounter.observe(counter));
+    counters.forEach((counter) => counterObserver.observe(counter));
   }
 
-  // ---------- Botó Scroll To Top ----------
-  const scrollBtn = document.getElementById("scrollTopBtn");
-
+  /* ------------------ SCROLL TO TOP ------------------ */
   if (scrollBtn) {
-    window.addEventListener(
-      "scroll",
-      () => {
-        scrollBtn.classList.toggle("show", window.scrollY > 300);
-      },
-      { passive: true }
-    );
+    const handleScrollButton = () => {
+      scrollBtn.classList.toggle("show", window.scrollY > 300);
+    };
+
+    handleScrollButton();
+    window.addEventListener("scroll", handleScrollButton, { passive: true });
 
     scrollBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({
+        top: 0,
+        behavior: reducedMotion ? "auto" : "smooth"
+      });
     });
   }
 });
