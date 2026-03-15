@@ -141,7 +141,7 @@ address {
   display: flex;
   align-items: center;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.8);
+  background: rgba(15, 23, 42, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
@@ -149,26 +149,28 @@ address {
 }
 
 .navbar.scrolled {
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(15, 23, 42, 0.96);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
   width: 100%;
-  max-width: var(--maxw);
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.2rem;
+  padding: 0 1rem;
+  min-height: var(--navbar-h);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.2rem;
+  overflow: hidden;
 }
 
 .logo {
-  font-size: 1.35rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--white);
-  letter-spacing: 0.4px;
+  letter-spacing: 0.2px;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -180,22 +182,37 @@ address {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.35rem;
+  align-items: center;
+  gap: 1rem;
   padding-left: 0;
   margin: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex: 1;
   justify-content: flex-end;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-links li {
   margin: 0;
+  flex: 0 0 auto;
 }
 
 .nav-links a {
   position: relative;
+  display: inline-block;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  line-height: 1.2;
+  padding: 0.4rem 0;
   transition: var(--transition);
 }
 
@@ -203,7 +220,7 @@ address {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: -3px;
   width: 0%;
   height: 2px;
   background: var(--accent);
