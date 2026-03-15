@@ -10,25 +10,29 @@
   <meta name="author" content="Ievgen Soloviov">
   <meta name="robots" content="index, follow">
   <meta name="keywords" content="ASIX, Systems Administrator, Networking, Cloud, DevOps, IT Portfolio, Linux, Windows Server, Docker">
-
   <meta name="theme-color" content="#0f172a">
 
-  <meta property="og:title" content="Ievgen Soloviov | Portfoli professional">
+  <meta property="og:title" content="Ievgen Soloviov | Portfoli professional de sistemes i cloud">
   <meta property="og:description" content="Currículum, projectes, especialització professional i portfoli IT.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="img/preview.png">
   <meta property="og:image:alt" content="Vista prèvia del portfoli professional d’Ievgen Soloviov">
+  <meta property="og:locale" content="ca_ES">
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
-  <a href="#main" class="sr-only">Saltar al contingut principal</a>
 
-  <nav class="navbar" role="navigation" aria-label="Navegació principal">
+<body>
+  <a href="#main" class="sr-only focusable">Saltar al contingut principal</a>
+
+  <nav class="navbar" aria-label="Navegació principal">
     <div class="nav-container">
-      <a href="#hero" class="logo">Ievgen<span>Soloviov</span></a>
+      <a href="#hero" class="logo" aria-label="Anar a l'inici del portfoli">
+        Ievgen<span>Soloviov</span>
+      </a>
 
       <ul class="nav-links">
         <li><a href="#about">Perfil</a></li>
@@ -44,16 +48,23 @@
   </nav>
 
   <header class="header-box" id="hero" role="banner">
-    <img src="img/foto.jpg" alt="Fotografia professional d’Ievgen Soloviov" class="profile-pic" loading="lazy">
+    <img
+      src="img/foto.jpg"
+      alt="Fotografia professional d’Ievgen Soloviov"
+      class="profile-pic"
+      width="220"
+      height="220"
+      fetchpriority="high"
+    >
 
-    <div>
+    <div class="hero-content">
       <p class="section-subtitle">IPOP · Portfoli professional</p>
 
       <h1>Ievgen Soloviov</h1>
 
-      <p>Tècnic en sistemes microinformàtics i xarxes · Estudiant del CFGS ASIX</p>
+      <p class="hero-role">Tècnic en sistemes microinformàtics i xarxes · Estudiant del CFGS ASIX</p>
 
-      <p class="icons-line">
+      <p class="icons-line" aria-label="Àrees d'interès professional">
         ☁️ Cloud · ⚙️ Sistemes · 🌐 Xarxes · 🔐 Seguretat
       </p>
 
@@ -64,56 +75,66 @@
 
       <div class="hero-actions">
         <a class="btn btn-primary" href="#projects">
-          <i class="fa-solid fa-diagram-project"></i> Veure projectes
+          <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+          <span>Veure projectes</span>
         </a>
 
         <a class="btn btn-ghost" href="#contact">
-          <i class="fa-solid fa-address-card"></i> Contacte
+          <i class="fa-solid fa-address-card" aria-hidden="true"></i>
+          <span>Contacte</span>
         </a>
 
         <a class="btn btn-ghost" href="cv-canva.pdf" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-file-lines"></i> CV personal
+          <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+          <span>CV personal</span>
         </a>
 
         <a class="btn btn-ghost" href="cv-europass.pdf" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-file"></i> CV Europass
+          <i class="fa-solid fa-file" aria-hidden="true"></i>
+          <span>CV Europass</span>
         </a>
 
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/ievgen-soloviov-0709bb299" target="_blank" rel="noopener noreferrer" aria-label="Obrir perfil de LinkedIn">
-          <i class="fa-brands fa-linkedin"></i>
+        <a class="btn btn-icon" href="https://www.linkedin.com/in/ievgen-soloviov-0709bb299" target="_blank" rel="noopener noreferrer" aria-label="Obrir perfil de LinkedIn">
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
         </a>
 
-        <a class="btn btn-ghost" href="https://github.com/ievgensoloviov" target="_blank" rel="noopener noreferrer" aria-label="Obrir perfil de GitHub">
-          <i class="fa-brands fa-github"></i>
+        <a class="btn btn-icon" href="https://github.com/ievgensoloviov" target="_blank" rel="noopener noreferrer" aria-label="Obrir perfil de GitHub">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
       </div>
     </div>
   </header>
 
-  <main id="main" role="main">
+  <main id="main">
     <section class="wrap fade-in" aria-labelledby="highlights-title">
-      <h2 id="highlights-title"><i class="fa-solid fa-chart-column"></i> Resum del perfil</h2>
+      <h2 id="highlights-title">
+        <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
+        Resum del perfil
+      </h2>
 
       <div class="grid-3">
-        <div class="card">
-          <h3 class="counter" data-target="3">0</h3>
-          <p>Projectes IT</p>
-        </div>
-
-        <div class="card">
+        <article class="card">
           <h3 class="counter" data-target="2">0</h3>
-          <p>Pràctiques</p>
-        </div>
+          <p>Projectes IT destacats</p>
+        </article>
 
-        <div class="card">
-          <h3 class="counter" data-target="10">0</h3>
-          <p>Tecnologies</p>
-        </div>
+        <article class="card">
+          <h3 class="counter" data-target="2">0</h3>
+          <p>Experiències professionals</p>
+        </article>
+
+        <article class="card">
+          <h3 class="counter" data-target="9">0</h3>
+          <p>Tecnologies principals</p>
+        </article>
       </div>
     </section>
 
     <section id="about" class="fade-in wrap" aria-labelledby="about-title">
-      <h2 id="about-title"><i class="fa-solid fa-user"></i> Perfil professional</h2>
+      <h2 id="about-title">
+        <i class="fa-solid fa-user" aria-hidden="true"></i>
+        Perfil professional
+      </h2>
 
       <article class="card">
         <p>
@@ -140,13 +161,19 @@
     </section>
 
     <section id="competencies" class="fade-in wrap" aria-labelledby="competencies-title">
-      <h2 id="competencies-title"><i class="fa-solid fa-gears"></i> Competències</h2>
+      <h2 id="competencies-title">
+        <i class="fa-solid fa-gears" aria-hidden="true"></i>
+        Competències
+      </h2>
 
       <div class="grid-2">
         <article class="card">
-          <h3><i class="fa-solid fa-screwdriver-wrench"></i> Competències tècniques</h3>
+          <h3>
+            <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+            Competències tècniques
+          </h3>
 
-          <ul class="skills-chiplist">
+          <ul class="skills-chiplist" aria-label="Competències tècniques">
             <li class="chip">Linux</li>
             <li class="chip">Windows Server</li>
             <li class="chip">Xarxes</li>
@@ -160,9 +187,12 @@
         </article>
 
         <article class="card">
-          <h3><i class="fa-solid fa-people-group"></i> Competències personals</h3>
+          <h3>
+            <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+            Competències personals
+          </h3>
 
-          <ul class="skills-chiplist">
+          <ul class="skills-chiplist" aria-label="Competències personals">
             <li class="chip">Resolució de problemes</li>
             <li class="chip">Treball en equip</li>
             <li class="chip">Adaptabilitat</li>
@@ -175,9 +205,12 @@
     </section>
 
     <section id="technologies" class="fade-in wrap" aria-labelledby="technologies-title">
-      <h2 id="technologies-title"><i class="fa-solid fa-microchip"></i> Tecnologies</h2>
+      <h2 id="technologies-title">
+        <i class="fa-solid fa-microchip" aria-hidden="true"></i>
+        Tecnologies
+      </h2>
 
-      <ul class="skills-chiplist">
+      <ul class="skills-chiplist" aria-label="Tecnologies principals">
         <li class="chip">Linux</li>
         <li class="chip">Windows</li>
         <li class="chip">Docker</li>
@@ -191,10 +224,16 @@
     </section>
 
     <section id="experience" class="fade-in wrap" aria-labelledby="experience-title">
-      <h2 id="experience-title"><i class="fa-solid fa-briefcase"></i> Experiència professional</h2>
+      <h2 id="experience-title">
+        <i class="fa-solid fa-briefcase" aria-hidden="true"></i>
+        Experiència professional
+      </h2>
 
       <article class="card">
-        <h3><i class="fa-solid fa-headset"></i> SERHS — Service Desk Technician</h3>
+        <h3>
+          <i class="fa-solid fa-headset" aria-hidden="true"></i>
+          SERHS — Service Desk Technician
+        </h3>
         <p class="meta">2025</p>
 
         <ul class="card-body">
@@ -206,7 +245,10 @@
       </article>
 
       <article class="card">
-        <h3><i class="fa-solid fa-building-columns"></i> Ajuntament de Lloret de Mar — Auxiliar IT</h3>
+        <h3>
+          <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+          Ajuntament de Lloret de Mar — Auxiliar IT
+        </h3>
         <p class="meta">2023</p>
 
         <ul class="card-body">
@@ -219,30 +261,52 @@
     </section>
 
     <section id="education" class="fade-in wrap" aria-labelledby="education-title">
-      <h2 id="education-title"><i class="fa-solid fa-graduation-cap"></i> Formació</h2>
+      <h2 id="education-title">
+        <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+        Formació
+      </h2>
 
       <article class="card">
-        <h3><i class="fa-solid fa-school"></i> CFGS Administració de Sistemes Informàtics en Xarxa</h3>
+        <h3>
+          <i class="fa-solid fa-school" aria-hidden="true"></i>
+          CFGS Administració de Sistemes Informàtics en Xarxa
+        </h3>
         <p>Institut Sa Palomera</p>
         <p class="meta">2024 – actualitat</p>
       </article>
 
       <article class="card">
-        <h3><i class="fa-solid fa-school"></i> CFGM Sistemes Microinformàtics i Xarxes</h3>
+        <h3>
+          <i class="fa-solid fa-school" aria-hidden="true"></i>
+          CFGM Sistemes Microinformàtics i Xarxes
+        </h3>
         <p>Institut Sa Palomera</p>
         <p class="meta">2022 – 2024</p>
       </article>
     </section>
 
     <section id="projects" class="fade-in wrap" aria-labelledby="projects-title">
-      <h2 id="projects-title"><i class="fa-solid fa-diagram-project"></i> Projectes</h2>
+      <h2 id="projects-title">
+        <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+        Projectes
+      </h2>
 
       <div class="projects-grid">
         <article class="card project-card">
-          <img src="img/project-hotel-app.png" alt="Captura del projecte Hotel Management App" class="project-image" loading="lazy">
+          <img
+            src="img/project-hotel-app.png"
+            alt="Captura del projecte Hotel Management App"
+            class="project-image"
+            loading="lazy"
+            width="800"
+            height="450"
+          >
 
           <div class="project-content">
-            <h3><i class="fa-solid fa-hotel"></i> Hotel Management App</h3>
+            <h3>
+              <i class="fa-solid fa-hotel" aria-hidden="true"></i>
+              Hotel Management App
+            </h3>
             <p class="meta">Python + PostgreSQL</p>
 
             <p>
@@ -250,7 +314,7 @@
               amb base de dades, lògica d’aplicació i administració del sistema.
             </p>
 
-            <div class="tags">
+            <div class="tags" aria-label="Etiquetes del projecte">
               <span class="badge">Python</span>
               <span class="badge">PostgreSQL</span>
               <span class="badge">Back-end</span>
@@ -259,17 +323,28 @@
 
             <p class="project-link">
               <a href="https://drive.google.com/drive/folders/1cHo6X1G8EaBOuPj4vm0Qt2R9xkxh8GaB" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Veure arxius del projecte
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                Veure arxius del projecte
               </a>
             </p>
           </div>
         </article>
 
         <article class="card project-card">
-          <img src="img/project-techsolutions.png" alt="Captura del projecte TechSolutions Infrastructure" class="project-image" loading="lazy">
+          <img
+            src="img/project-techsolutions.png"
+            alt="Captura del projecte TechSolutions Infrastructure"
+            class="project-image"
+            loading="lazy"
+            width="800"
+            height="450"
+          >
 
           <div class="project-content">
-            <h3><i class="fa-solid fa-network-wired"></i> TechSolutions Infrastructure</h3>
+            <h3>
+              <i class="fa-solid fa-network-wired" aria-hidden="true"></i>
+              TechSolutions Infrastructure
+            </h3>
             <p class="meta">Desplegament complet d’infraestructura IT</p>
 
             <p>
@@ -277,7 +352,7 @@
               sistemes Windows i Linux, seguretat i administració d’entorns corporatius.
             </p>
 
-            <div class="tags">
+            <div class="tags" aria-label="Etiquetes del projecte">
               <span class="badge">Windows</span>
               <span class="badge">Linux</span>
               <span class="badge">Xarxes</span>
@@ -286,7 +361,8 @@
 
             <p class="project-link">
               <a href="https://drive.google.com/drive/folders/1VF-ht9ClLWi4b1KtknwVLrIZdETHP4xI" target="_blank" rel="noopener noreferrer">
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> Veure arxius del projecte
+                <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                Veure arxius del projecte
               </a>
             </p>
           </div>
@@ -295,11 +371,17 @@
     </section>
 
     <section id="promotion-plan" class="fade-in wrap" aria-labelledby="promotion-title">
-      <h2 id="promotion-title"><i class="fa-solid fa-bullseye"></i> Pla de promoció personal</h2>
+      <h2 id="promotion-title">
+        <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+        Pla de promoció personal
+      </h2>
 
       <div class="grid-2">
         <article class="card">
-          <h3><i class="fa-solid fa-lightbulb"></i> Estratègia</h3>
+          <h3>
+            <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+            Estratègia
+          </h3>
 
           <ul class="card-body">
             <li>Mantenir GitHub actualitzat amb projectes i documentació.</li>
@@ -310,7 +392,10 @@
         </article>
 
         <article class="card">
-          <h3><i class="fa-solid fa-list-check"></i> Pla d’actuació</h3>
+          <h3>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
+            Pla d’actuació
+          </h3>
 
           <ul class="card-body">
             <li>Documentar els projectes més representatius.</li>
@@ -323,44 +408,47 @@
     </section>
 
     <section id="contact" class="fade-in wrap" aria-labelledby="contact-title">
-  <h2 id="contact-title"><i class="fa-solid fa-address-card"></i> Contacte</h2>
+      <h2 id="contact-title">
+        <i class="fa-solid fa-address-card" aria-hidden="true"></i>
+        Contacte
+      </h2>
 
-  <div class="card contact-card">
-    <p>
-      <i class="fa-solid fa-envelope"></i>
-      <a href="mailto:evgensoloviov12@gmail.com">evgensoloviov12@gmail.com</a>
-    </p>
+      <address class="card contact-card">
+        <p>
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:evgensoloviov12@gmail.com">evgensoloviov12@gmail.com</a>
+        </p>
 
-    <p>
-      <i class="fa-brands fa-linkedin"></i>
-      <a href="https://www.linkedin.com/in/ievgen-soloviov-0709bb299" target="_blank" rel="noopener noreferrer">
-        linkedin.com/in/ievgen-soloviov-0709bb299
-      </a>
-    </p>
+        <p>
+          <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          <a href="https://www.linkedin.com/in/ievgen-soloviov-0709bb299" target="_blank" rel="noopener noreferrer">
+            linkedin.com/in/ievgen-soloviov-0709bb299
+          </a>
+        </p>
 
-    <p>
-      <i class="fa-brands fa-github"></i>
-      <a href="https://github.com/ievgensoloviov" target="_blank" rel="noopener noreferrer">
-        github.com/ievgensoloviov
-      </a>
-    </p>
+        <p>
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          <a href="https://github.com/ievgensoloviov" target="_blank" rel="noopener noreferrer">
+            github.com/ievgensoloviov
+          </a>
+        </p>
 
-    <p>
-      <i class="fa-solid fa-file-lines"></i>
-      <a href="cv-canva.pdf" target="_blank" rel="noopener noreferrer">Descarregar CV personal</a>
-    </p>
+        <p>
+          <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+          <a href="cv-canva.pdf" target="_blank" rel="noopener noreferrer">Descarregar CV personal</a>
+        </p>
 
-    <p>
-      <i class="fa-solid fa-file"></i>
-      <a href="cv-europass.pdf" target="_blank" rel="noopener noreferrer">Descarregar CV Europass</a>
-    </p>
+        <p>
+          <i class="fa-solid fa-file" aria-hidden="true"></i>
+          <a href="cv-europass.pdf" target="_blank" rel="noopener noreferrer">Descarregar CV Europass</a>
+        </p>
 
-    <p>
-      <i class="fa-solid fa-location-dot"></i>
-      Blanes, Girona, Espanya
-    </p>
-  </div>
-</section>
+        <p>
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          Blanes, Girona, Espanya
+        </p>
+      </address>
+    </section>
   </main>
 
   <footer class="wrap" role="contentinfo">
@@ -372,14 +460,35 @@
     </small>
   </footer>
 
-  <div class="floating-controls">
-    <button id="theme-toggle" aria-label="Canviar tema de color" aria-pressed="false">🌙</button>
-    <button id="scrollTopBtn" aria-label="Tornar a dalt" title="Tornar a dalt">⬆</button>
+  <div class="floating-controls" aria-label="Controls de pàgina">
+    <button id="theme-toggle" type="button" aria-label="Canviar tema de color" aria-pressed="false">🌙</button>
+    <button id="scrollTopBtn" type="button" aria-label="Tornar a dalt" title="Tornar a dalt">⬆</button>
   </div>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ievgen Soloviov",
+    "jobTitle": "Estudiant d'ASIX / Junior IT Systems and Cloud Profile",
+    "email": "mailto:evgensoloviov12@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Blanes",
+      "addressRegion": "Girona",
+      "addressCountry": "ES"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/ievgen-soloviov-0709bb299",
+      "https://github.com/ievgensoloviov"
+    ]
+  }
+  </script>
+
   <script src="script.js" defer></script>
 </body>
 </html>
