@@ -84,28 +84,52 @@
           <span>Contacte</span>
         </a>
 
-        <a class="btn btn-ghost" href="cv-canva.pdf" target="_blank" rel="noopener noreferrer">
+        <a
+          class="btn btn-ghost"
+          href="cv-canva.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Obrir CV personal en PDF"
+        >
           <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
           <span>CV personal</span>
         </a>
 
-        <a class="btn btn-ghost" href="cv-europass.pdf" target="_blank" rel="noopener noreferrer">
+        <a
+          class="btn btn-ghost"
+          href="cv-europass.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Obrir CV Europass en PDF"
+        >
           <i class="fa-solid fa-file" aria-hidden="true"></i>
           <span>CV Europass</span>
         </a>
 
-        <a class="btn btn-icon" href="https://www.linkedin.com/in/ievgen-soloviov-0709bb299" target="_blank" rel="noopener noreferrer" aria-label="Obrir perfil de LinkedIn">
+        <a
+          class="btn btn-icon"
+          href="https://www.linkedin.com/in/ievgen-soloviov-0709bb299"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Obrir perfil de LinkedIn"
+        >
           <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
         </a>
 
-        <a class="btn btn-icon" href="https://github.com/ievgensoloviov" target="_blank" rel="noopener noreferrer" aria-label="Obrir perfil de GitHub">
+        <a
+          class="btn btn-icon"
+          href="https://github.com/ievgensoloviov"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Obrir perfil de GitHub"
+        >
           <i class="fa-brands fa-github" aria-hidden="true"></i>
         </a>
       </div>
     </div>
   </header>
 
-  <main id="main">
+  <main id="main" role="main">
     <section class="wrap fade-in" aria-labelledby="highlights-title">
       <h2 id="highlights-title">
         <i class="fa-solid fa-chart-column" aria-hidden="true"></i>
@@ -210,17 +234,19 @@
         Tecnologies
       </h2>
 
-      <ul class="skills-chiplist" aria-label="Tecnologies principals">
-        <li class="chip">Linux</li>
-        <li class="chip">Windows</li>
-        <li class="chip">Docker</li>
-        <li class="chip">Git</li>
-        <li class="chip">PostgreSQL</li>
-        <li class="chip">MySQL</li>
-        <li class="chip">Python</li>
-        <li class="chip">Xarxes</li>
-        <li class="chip">Virtualització</li>
-      </ul>
+      <div class="card">
+        <ul class="skills-chiplist" aria-label="Tecnologies principals">
+          <li class="chip">Linux</li>
+          <li class="chip">Windows</li>
+          <li class="chip">Docker</li>
+          <li class="chip">Git</li>
+          <li class="chip">PostgreSQL</li>
+          <li class="chip">MySQL</li>
+          <li class="chip">Python</li>
+          <li class="chip">Xarxes</li>
+          <li class="chip">Virtualització</li>
+        </ul>
+      </div>
     </section>
 
     <section id="experience" class="fade-in wrap" aria-labelledby="experience-title">
@@ -466,7 +492,7 @@
   </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
   <script type="application/ld+json">
